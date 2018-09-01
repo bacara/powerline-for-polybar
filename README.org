@@ -29,7 +29,7 @@ git clone https://www.github.com/bacara/powerline-for-polybar <path/to/folder>
 
 * Beginner's guide
 
-  The file [[samples/powerline-for-polybar.config][file:powerline-for-polybar.config]] contains pre-configured templates to be inherited by your Polybar modules in
+  The file [[powerline-for-polybar.config][file:powerline-for-polybar.config]] contains pre-configured templates to be inherited by your Polybar modules in
   order to your own build fancy Powerline setup. A good start is to include this file to your Polybar configuration
   file :
 
@@ -41,7 +41,7 @@ include-file = /path/to/powerline-for-polybar/powerline-for-polybar.config
 
   In order to use a template for your modules, you have to make your module inherits from the template, and set a few
   parameters. In case examples in this document aren't comprehensive enough, don't hesitate to look inside
-  [[samples/powerline-for-polybar.config][file:powerline-for-polybar.config]] for parameters that must be set, as they are documented along each templates. A
+  [[powerline-for-polybar.config][file:powerline-for-polybar.config]] for parameters that must be set, as they are documented along each templates. A
   generic example would be :
 
 #+BEGIN_SRC ini
