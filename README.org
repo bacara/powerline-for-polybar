@@ -176,7 +176,7 @@ configuration] file is [[samples/4_separated-left-to-right.config][file:samples/
   The template used in this example is =powerline/left-to-right-item-with-separator=. Expected keys are =background= for the
   current item background, and =separator= corresponding to the separator color.
 
-  There are two subtilities with this template :
+  There are two subtle things with this template :
 
   * For the first item of the line (leftmost in this case), you have to use a specific template:
     =powerline/left-to-right-starting-item-with-separator=. This template uses the same parameters as above.
