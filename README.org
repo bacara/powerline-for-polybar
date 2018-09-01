@@ -7,14 +7,14 @@ Powerline for Polybar is a utility set of pre-configured Polybar module template
 
 An example being better than words, here's a quick look :
 
-[[samples/1_simple-left-to-right.png][file:samples/1_simple-left-to-right.png]]
+[[./samples/1_simple-left-to-right.png][file:samples/1_simple-left-to-right.png]]
 
 [[samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
 
 * Prerequisites and dependencies
 
   As this utility library is dedicated to be used with Polybar, i strongly advice you to install it. From now, I will
-  assume you know the basis of Polybar configuration, and that you know how to run a sample.
+  assume you know the basis of Polybar configuration.
 
 * Installation
 
@@ -55,7 +55,7 @@ inherit      = <template>
 
   Real parameters will be explained along the following examples.
 
-** Simple Powerline bar
+*** Simple Powerline bar
 
    Let take a look back at the first example (corresponding configuration file is
    [[samples/1_simple-left-to-right.config][file:samples/1_simple-left-to-right.config]]):
