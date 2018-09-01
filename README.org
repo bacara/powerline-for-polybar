@@ -9,7 +9,7 @@ An example being better than words, here's a quick look :
 
 [[./samples/1_simple-left-to-right.png][file:samples/1_simple-left-to-right.png]]
 
-[[samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
+[[./samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
 
 * Prerequisites and dependencies
 
@@ -29,7 +29,7 @@ git clone https://www.github.com/bacara/powerline-for-polybar <path/to/folder>
 
 * Beginner's guide
 
-  The file [[powerline-for-polybar.config][file:powerline-for-polybar.config]] contains pre-configured templates to be inherited by your Polybar modules in
+  The file [[./powerline-for-polybar.config][file:powerline-for-polybar.config]] contains pre-configured templates to be inherited by your Polybar modules in
   order to your own build fancy Powerline setup. A good start is to include this file to your Polybar configuration
   file :
 
@@ -41,7 +41,7 @@ include-file = /path/to/powerline-for-polybar/powerline-for-polybar.config
 
   In order to use a template for your modules, you have to make your module inherits from the template, and set a few
   parameters. In case examples in this document aren't comprehensive enough, don't hesitate to look inside
-  [[powerline-for-polybar.config][file:powerline-for-polybar.config]] for parameters that must be set, as they are documented along each templates. A
+  [[./powerline-for-polybar.config][file:powerline-for-polybar.config]] for parameters that must be set, as they are documented along each templates. A
   generic example would be :
 
 #+BEGIN_SRC ini
@@ -58,9 +58,9 @@ inherit      = <template>
 *** Simple Powerline bar
 
    Let take a look back at the first example (corresponding configuration file is
-   [[samples/1_simple-left-to-right.config][file:samples/1_simple-left-to-right.config]]):
+   [[./samples/1_simple-left-to-right.config][file:samples/1_simple-left-to-right.config]]):
 
-   [[samples/1_simple-left-to-right.png][file:samples/1_simple-left-to-right.png]]
+   [[./samples/1_simple-left-to-right.png][file:samples/1_simple-left-to-right.png]]
 
    This bar is made out of 4 components (from left to right):
 
@@ -162,16 +162,16 @@ configuration right.
 
 Note that template is also available in right-to-left, using corresponding template names. For right-to-left lines,
 consider the rightmost item is the starting item while the leftmost is the ending one. The sample configuration file for
-the right-to-left equivalent of this example is [[3_simple-right-to-left.config][file:samples/3_simple-right-to-left.config]].
+the right-to-left equivalent of this example is [[./3_simple-right-to-left.config][file:samples/3_simple-right-to-left.config]].
 
-[[samples/3_simple-right-to-left.png][file:samples/3_simple-right-to-left.png]]
+[[./samples/3_simple-right-to-left.png][file:samples/3_simple-right-to-left.png]]
 
 ** Separator-including Powerline bar
 
 Another, slightly more complicated example, is a Powerline bar including separators between items (corresponding
-configuration] file is [[samples/4_separated-left-to-right.config][file:samples/4_separated-left-to-right.config]]):
+configuration] file is [[./samples/4_separated-left-to-right.config][file:samples/4_separated-left-to-right.config]]):
 
-[[samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
+[[./samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
 
   The template used in this example is =powerline/left-to-right-item-with-separator=. Expected keys are =background= for the
   current item background, and =separator= corresponding to the separator color.
@@ -258,15 +258,15 @@ inherit            = powerline/left-to-right-end-of-line-separator
 separator          = ${colors.black}
 #+END_SRC
 
-You should now have something like this ([[samples/6_separated-left-to-right-noborder.config][file:samples/6_separated-left-to-right-noborder.config]]):
+You should now have something like this ([[./samples/6_separated-left-to-right-noborder.config][file:samples/6_separated-left-to-right-noborder.config]]):
 
-[[samples/6_separated-left-to-right-noborder.png][file:samples/6_separated-left-to-right-noborder.png]]
+[[./samples/6_separated-left-to-right-noborder.png][file:samples/6_separated-left-to-right-noborder.png]]
 
 #+BEGIN_QUOTE
 In case you forget to use the =powerline/left-to-right-starting-item-with-separator= for the first module, this is what
-to expect, but might be intended ([[samples/5_separated-left-to-right-nostarting-noborder.config][file:samples/5_separated-left-to-right-nostarting-noborder.config]]):
+to expect, but might be intended ([[./samples/5_separated-left-to-right-nostarting-noborder.config][file:samples/5_separated-left-to-right-nostarting-noborder.config]]):
 
-[[samples/5_separated-left-to-right-nostarting-noborder.png][file:samples/5_separated-left-to-right-nostarting-noborder.png]]
+[[./samples/5_separated-left-to-right-nostarting-noborder.png][file:samples/5_separated-left-to-right-nostarting-noborder.png]]
 #+END_QUOTE
 
 My opinion being that separator-including lines look far better with borders, let's add them to finish building up our
@@ -283,11 +283,11 @@ border-color       = #ffffff
 ...
 #+END_SRC
 
-[[samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
+[[./samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
 
-Again, right-to-left equivalent is available ([[samples/7_separated-right-to-left.config][file:samples/7_separated-right-to-left.config]]):
+Again, right-to-left equivalent is available ([[./samples/7_separated-right-to-left.config][file:samples/7_separated-right-to-left.config]]):
 
-[[samples/7_separated-right-to-left.png][file:samples/7_separated-right-to-left.png]]
+[[./samples/7_separated-right-to-left.png][file:samples/7_separated-right-to-left.png]]
 
 * Reference sheet
 
