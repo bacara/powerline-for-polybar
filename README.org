@@ -150,6 +150,7 @@ And finally, add a Powerline-supporting font and modules lists in your bar confi
 #+BEGIN_SRC ini
 [bar/my-bar]
 ...
+height = 20
 font-X = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
 ...
 modules-left   = logo cpu memory
@@ -190,6 +191,7 @@ configuration file is [[./samples/4_separated-left-to-right.config][file:samples
 #+BEGIN_SRC ini
 [bar/my-bar]
 ...
+height = 20
 font-X = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
 ...
 modules-left   = logo cpu memory end-of-line
