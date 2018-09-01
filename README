@@ -14,7 +14,7 @@ An example being better than words, here's a quick look :
 
 Some complete example configurations :
 
-[[img/deep-ux_bottom-bar.png][file:img/deep-ux_bottom-bar.png]]
+[[./img/deep-ux_bottom-bar.png][file:img/deep-ux_bottom-bar.png]]
 
 * Prerequisites and dependencies
 
@@ -63,7 +63,7 @@ inherit      = <template>
 ** Simple Powerline bar
 
    Let take a look back at the first example (corresponding configuration file is
-   [[./img/1_simple-left-to-right.config][file:img/1_simple-left-to-right.config]]):
+   [[./samples/1_simple-left-to-right.config][file:samples/1_simple-left-to-right.config]]):
 
    [[./img/1_simple-left-to-right.png][file:img/1_simple-left-to-right.png]]
 
@@ -168,14 +168,14 @@ configuration right.
 
 Note that template is also available in right-to-left, using corresponding template names. For right-to-left lines,
 consider the rightmost item is the starting item while the leftmost is the ending one. The sample configuration file for
-the right-to-left equivalent of this example is [[./img/3_simple-right-to-left.config][file:img/3_simple-right-to-left.config]].
+the right-to-left equivalent of this example is [[./samples/3_simple-right-to-left.config][file:samples/3_simple-right-to-left.config]].
 
 [[./img/3_simple-right-to-left.png][file:img/3_simple-right-to-left.png]]
 
 ** Separator-including Powerline bar
 
 Another, slightly more complicated example, is a Powerline bar including separators between items (corresponding
-configuration file is [[./img/4_separated-left-to-right.config][file:img/4_separated-left-to-right.config]]):
+configuration file is [[./samples/4_separated-left-to-right.config][file:samples/4_separated-left-to-right.config]]):
 
 [[./img/4_separated-left-to-right.png][file:img/4_separated-left-to-right.png]]
 
@@ -265,13 +265,13 @@ inherit            = powerline/left-to-right-end-of-line-separator
 separator          = ${colors.black}
 #+END_SRC
 
-You should now have something like this ([[./img/6_separated-left-to-right-noborder.config][file:img/6_separated-left-to-right-noborder.config]]):
+You should now have something like this ([[./samples/6_separated-left-to-right-noborder.config][file:samples/6_separated-left-to-right-noborder.config]]):
 
 [[./img/6_separated-left-to-right-noborder.png][file:img/6_separated-left-to-right-noborder.png]]
 
 #+BEGIN_QUOTE
 In case you forget to use the =powerline/left-to-right-starting-item-with-separator= for the first module, this is what
-to expect, but might be intended ([[./img/5_separated-left-to-right-nostarting-noborder.config][file:img/5_separated-left-to-right-nostarting-noborder.config]]):
+to expect, but might be intended ([[./samples/5_separated-left-to-right-nostarting-noborder.config][file:samples/5_separated-left-to-right-nostarting-noborder.config]]):
 
 [[./img/5_separated-left-to-right-nostarting-noborder.png][file:img/5_separated-left-to-right-nostarting-noborder.png]]
 #+END_QUOTE
@@ -292,7 +292,7 @@ border-color       = #ffffff
 
 [[./img/4_separated-left-to-right.png][file:img/4_separated-left-to-right.png]]
 
-Again, right-to-left equivalent is available ([[./img/7_separated-right-to-left.config][file:img/7_separated-right-to-left.config]]):
+Again, right-to-left equivalent is available ([[./samples/7_separated-right-to-left.config][file:samples/7_separated-right-to-left.config]]):
 
 [[./img/7_separated-right-to-left.png][file:img/7_separated-right-to-left.png]]
 
