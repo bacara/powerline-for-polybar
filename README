@@ -299,3 +299,12 @@ Again, right-to-left equivalent is available ([[./samples/7_separated-right-to-l
 * Reference sheet
 
   *[WORK IN PROGRESS]*
+
+* Future works
+
+  * Split modules and templates, something like:
+    * powerline-modules/... powerline-templates/...
+    Don't forget to update all documentation
+
+  * Add support for workspaces, maybe through user-redefined template. A bit conky, but we can't do best 'til
+    prefix/sufix for independant workspace is released (will it?).
