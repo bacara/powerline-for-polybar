@@ -192,7 +192,7 @@ modules-center = xwindow
 
   * Logo module (using the starting item template)
 
-#+BEGIN_SRC
+#+BEGIN_SRC ini
 [module/logo]
 
 ; Powerline settings
@@ -209,7 +209,7 @@ content            = " Polybar "
 
   * CPU module
 
-#+BEGIN_SRC
+#+BEGIN_SRC ini
 [module/cpu]
 
 ; Powerline settings
@@ -226,7 +226,7 @@ label              = " CPU: %percentage%% "
 
   * RAM module
 
-#+BEGIN_SRC
+#+BEGIN_SRC ini
 [module/memory]
 
 ; Powerline settings
@@ -243,7 +243,7 @@ label              = " RAM: %percentage_used%% "
 
   * End-of-line separator
 
-#+BEGIN_SRC
+#+BEGIN_SRC ini
 [module/end-of-line]
 
 ; Powerline settings
@@ -265,7 +265,7 @@ to expect, but might be intended ([[samples/5_separated-left-to-right-nostarting
 My opinion being that separator-including lines look far better with borders, let's add them to finish building up our
 current example :
 
-#+BEGIN_SRC
+#+BEGIN_SRC ini
 [bar/my-bar]
 ...
 border-left-size   = 2
