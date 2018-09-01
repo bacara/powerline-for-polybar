@@ -52,11 +52,18 @@ include-file = /path/to/powerline-for-polybar/powerline-for-polybar.config
 #+BEGIN_SRC ini
 [module/my-module]
 ...
-inherit      = <template>
+inherit      = <powerline-something>
 <parameter1> = <background-color>
 <parameter2> = <foreground-color>
 ...
 #+END_SRC
+
+#+BEGIN_QUOTE
+In this library, you will find two categories of objects to inherit from : =powerline-templates= and =powerline-modules=.
+=powerline-templates= are meant to be inherited by your own modules, which mean you have to set the template parameters
+*and* the parameters of your module (such as graphical properties, labels, formatting, ...). =powerline-modules= are
+stand-alone modules that you only have to inherit from and set their parameters.
+#+END_QUOTE
 
   Real parameters will be explained along the following examples.
 
@@ -77,11 +84,11 @@ inherit      = <template>
    To build one of the first three item (those Powerline fancy things), you only need to know the background color you
    want for this item, and the background color of the next (in line direction) item.
 
-   The template used in this example is =powerline/left-to-right-item=. First, make your module inherit from the template
-   inside their configuration section.
+   The template used in this example is =powerline-templates/left-to-right-item=. First, make your module inherit from the
+   template inside their configuration section.
 
 #+BEGIN_SRC ini
-inherit        = powerline/left-to-right-item
+inherit        = powerline-templates/left-to-right-item
 #+END_SRC
 
    And add the needed background colors: =background= is the background for the current item, and =background-next= is the
@@ -100,7 +107,7 @@ background-next = <insert-next-item-background-color>
 [module/logo]
 
 ; Powerline-for-Polybar settings
-inherit            = powerline/left-to-right-item
+inherit            = powerline-templates/left-to-right-item
 background         = ${colors.red}
 background-next    = ${colors.yellow}
 
@@ -117,7 +124,7 @@ content            = " Polybar "
 [module/cpu]
 
 ; Powerline-for-Polybar settings
-inherit           = powerline/left-to-right-item
+inherit           = powerline-templates/left-to-right-item
 background        = ${colors.yellow}
 background-next   = ${colors.green}
 
@@ -134,7 +141,7 @@ label             = " CPU: %percentage%% "
 [module/memory]
 
 ; Powerline-for-Polybar settings
-inherit           = powerline/left-to-right-item
+inherit           = powerline-templates/left-to-right-item
 background        = ${colors.green}
 background-next   = ${root.background}
 
@@ -179,15 +186,15 @@ configuration file is [[./samples/4_separated-left-to-right.config][file:samples
 
 [[./img/4_separated-left-to-right.png][file:img/4_separated-left-to-right.png]]
 
-  The template used in this example is =powerline/left-to-right-item-with-separator=. Expected keys are =background= for the
-  current item background, and =separator= corresponding to the separator color.
+  The template used in this example is =powerline-templates/left-to-right-item-with-separator=. Expected keys are
+  =background= for the current item background, and =separator= corresponding to the separator color.
 
   There are two subtle things with this template :
 
   * For the first item of the line (leftmost in this case), you have to use a specific template:
-    =powerline/left-to-right-starting-item-with-separator=. This template uses the same parameters as above.
-  * At the end of the line, you have to insert a small module inheriting from the template
-    =powerline/left-to-right-end-of-line-separator=, which only needs a =background= value.
+    =powerline-templates/left-to-right-starting-item-with-separator=. This template uses the same parameters as above.
+  * At the end of the line, you have to insert a small module inheriting from the standalone module
+    =powerline-modules/left-to-right-end-of-line-separator=, which only needs a =background= value.
 
   In order to build this sample, here's the code:
 
@@ -210,7 +217,7 @@ modules-center = xwindow
 [module/logo]
 
 ; Powerline settings
-inherit            = powerline/left-to-right-starting-item-with-separator
+inherit            = powerline-templates/left-to-right-starting-item-with-separator
 background         = ${colors.red}
 separator          = ${colors.black}
 
@@ -227,7 +234,7 @@ content            = " Polybar "
 [module/cpu]
 
 ; Powerline settings
-inherit            = powerline/left-to-right-item-with-separator
+inherit            = powerline-templates/left-to-right-item-with-separator
 background         = ${colors.yellow}
 separator          = ${colors.black}
 
@@ -244,7 +251,7 @@ label              = " CPU: %percentage%% "
 [module/memory]
 
 ; Powerline settings
-inherit            = powerline/left-to-right-item-with-separator
+inherit            = powerline-templates/left-to-right-item-with-separator
 background         = ${colors.green}
 separator          = ${colors.black}
 
@@ -261,7 +268,7 @@ label              = " RAM: %percentage_used%% "
 [module/end-of-line]
 
 ; Powerline settings
-inherit            = powerline/left-to-right-end-of-line-separator
+inherit            = powerline-modules/left-to-right-end-of-line-separator
 separator          = ${colors.black}
 #+END_SRC
 
@@ -270,8 +277,8 @@ You should now have something like this ([[./samples/6_separated-left-to-right-n
 [[./img/6_separated-left-to-right-noborder.png][file:img/6_separated-left-to-right-noborder.png]]
 
 #+BEGIN_QUOTE
-In case you forget to use the =powerline/left-to-right-starting-item-with-separator= for the first module, this is what
-to expect, but might be intended ([[./samples/5_separated-left-to-right-nostarting-noborder.config][file:samples/5_separated-left-to-right-nostarting-noborder.config]]):
+In case you forget to use the =powerline-templates/left-to-right-starting-item-with-separator= for the first module, this
+is what to expect, but might be intended ([[./samples/5_separated-left-to-right-nostarting-noborder.config][file:samples/5_separated-left-to-right-nostarting-noborder.config]]):
 
 [[./img/5_separated-left-to-right-nostarting-noborder.png][file:img/5_separated-left-to-right-nostarting-noborder.png]]
 #+END_QUOTE
@@ -302,7 +309,7 @@ Again, right-to-left equivalent is available ([[./samples/7_separated-right-to-l
 
 * Future works
 
-  * Split modules and templates, something like:
+  * IN-PROGRESS Split modules and templates, something like:
     * powerline-modules/... powerline-templates/...
     Don't forget to update all documentation
 
