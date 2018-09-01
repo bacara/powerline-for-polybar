@@ -1,0 +1,287 @@
+#+TITLE: Powerline for Polybar
+#+LANGUAGE: en
+
+* Introduction
+
+Powerline for Polybar is a utility set of pre-configured Polybar module templates.
+
+An example being better than words, here's a quick look :
+
+file:samples/1_simple-left-to-right.png
+
+file:samples/4_separated-left-to-right.png
+
+* Prerequisites and dependencies
+
+  As this utility library is dedicated to be used with Polybar, i strongly advice you to install it. From now, I will
+  assume you know the basis of Polybar configuration, and that you know how to run a sample.
+
+* Installation
+
+  Installation is pretty straightforward: this repository is only composed of text files and Polybar configuration
+  files. You only have to clone/download/rewrite files to somewhere on your system.
+
+#+BEGIN_SRC shell
+git clone https://www.github.com/bacara/powerline-for-polybar <path/to/folder>
+#+END_SRC
+
+  Yay!
+
+* Beginner's guide
+
+  The file file:powerline-for-polybar.config contains pre-configured templates to be inherited by your Polybar modules in
+  order to your own build fancy Powerline setup.
+
+  In order to use a template for your modules, you have to make your module inherits from the template, and set a few
+  parameters. In case examples in this document aren't comprehensive enough, don't hesitate to look inside
+  file:powerline-for-polybar.config for parameters that must be set, as they are documented along each templates. A
+  generic example would be :
+
+#+BEGIN_SRC ini
+[module/my-module]
+...
+inherit      = <template>
+<parameter1> = <background-color>
+<parameter2> = <foreground-color>
+...
+#+END_SRC
+
+  Real parameters will be explained along the following examples.
+
+** Simple Powerline bar
+
+   Let take a look back at the first example (corresponding configuration file is
+   file:samples/1_simple-left-to-right.config):
+
+   file:samples/1_simple-left-to-right.png
+
+   This bar is made out of 4 components (from left to right):
+
+   * user-defined "logo" item ("Polybar" here, but your favorite distribution's logo will work fine)
+   * CPU load monitor module
+   * RAM usage monitor module
+   * Current window title display
+
+   To build one of the first three item (those Powerline fancy things), you only need to know the background color you
+   want for this item, and the background color of the next (in line direction) item.
+
+   The template used in this example is =powerline/left-to-right-item=. First, make your module inherit from the template
+   inside their configuration section.
+
+#+BEGIN_SRC ini
+inherit        = powerline/left-to-right-item
+#+END_SRC
+
+   And add the needed background colors: =background= is the background for the current item, and =background-next= is the
+   background of the next item (or bar's background for the last item).
+
+#+BEGIN_SRC ini
+background      = <insert-current-item-background-color>
+background-next = <insert-next-item-background-color>
+#+END_SRC
+
+   Once this is explained and looking back at the sample, here's the code to build each of its Powerline modules:
+
+   * Logo module
+
+#+BEGIN_SRC ini
+[module/logo]
+
+; Powerline-for-Polybar settings
+inherit            = powerline/left-to-right-item
+background         = ${colors.red}
+background-next    = ${colors.yellow}
+
+; Other settings
+type               = custom/text
+content-background = ${self.background}
+content-foreground = ${colors.black}
+content            = " Polybar "
+#+END_SRC
+
+   * CPU module
+
+#+BEGIN_SRC ini
+[module/cpu]
+
+; Powerline-for-Polybar settings
+inherit           = powerline/left-to-right-item
+background        = ${colors.yellow}
+background-next   = ${colors.green}
+
+; Other settings
+type              = internal/cpu
+format-background = ${self.background}
+format-foreground = ${colors.black}
+label             = " CPU: %percentage%% "
+#+END_SRC
+
+   * RAM module
+
+#+BEGIN_SRC ini
+[module/memory]
+
+; Powerline-for-Polybar settings
+inherit           = powerline/left-to-right-item
+background        = ${colors.green}
+background-next   = ${root.background}
+
+; Other settings
+type              = internal/memory
+format-background = ${self.background}
+format-foreground = ${colors.black}
+label             = " RAM: %percentage_used%% "
+#+END_SRC
+
+#+BEGIN_QUOTE
+Special case: as the RAM module is the last Powerline item of its line, =background-next= shall be set to the bar's
+background color (which can be easily reached using =${root.background}=).
+#+END_QUOTE
+
+And finally, add a Powerline-supporting font and modules lists in your bar configuration:
+
+#+BEGIN_SRC ini
+[bar/my-bar]
+...
+font-X = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
+...
+modules-left   = logo cpu memory
+modules-center = xwindow
+...
+#+END_SRC
+
+TADA! You should now have a bar looking more or less like this first sample, assuming you got your colors/fonts
+configuration right.
+
+Note that template is also available in right-to-left, using corresponding template names. For right-to-left lines,
+consider the rightmost item is the starting item while the leftmost is the ending one. The sample configuration file for
+the right-to-left equivalent of this example is file:samples/3_simple-right-to-left.config.
+
+file:samples/3_simple-right-to-left.png
+
+** Separator-including Powerline bar
+
+Another, slightly more complicated example, is a Powerline bar including separators between items (corresponding
+configuration file is file:samples/4_separated-left-to-right.config):
+
+file:samples/4_separated-left-to-right.png
+
+  The template used in this example is =powerline/left-to-right-item-with-separator=. Expected keys are =background= for the
+  current item background, and =separator= corresponding to the separator color.
+
+  There are two subtilities with this template :
+
+  * For the first item of the line (leftmost in this case), you have to use a specific template:
+    =powerline/left-to-right-starting-item-with-separator=. This template uses the same parameters as above.
+  * At the end of the line, you have to insert a small module inheriting from the template
+    =powerline/left-to-right-end-of-line-separator=, which only needs a =background= value.
+
+  In order to build this sample, here's the code:
+
+  * Bar settings
+
+#+BEGIN_SRC ini
+[bar/my-bar]
+...
+font-X = "Inconsolata for Powerline:pixelsize=15:antialias=true;3"
+...
+modules-left   = logo cpu memory end-of-line
+modules-center = xwindow
+...
+#+END_SRC
+
+  * Logo module (using the starting item template)
+
+#+BEGIN_SRC
+[module/logo]
+
+; Powerline settings
+inherit            = powerline/left-to-right-starting-item-with-separator
+background         = ${colors.red}
+separator          = ${colors.black}
+
+; Other settings
+type               = custom/text
+content-background = ${self.background}
+content-foreground = ${colors.black}
+content            = " Polybar "
+#+END_SRC
+
+  * CPU module
+
+#+BEGIN_SRC
+[module/cpu]
+
+; Powerline settings
+inherit            = powerline/left-to-right-item-with-separator
+background         = ${colors.yellow}
+separator          = ${colors.black}
+
+; Other settings
+type               = internal/cpu
+format-background  = ${self.background}
+format-foreground  = ${colors.black}
+label              = " CPU: %percentage%% "
+#+END_SRC
+
+  * RAM module
+
+#+BEGIN_SRC
+[module/memory]
+
+; Powerline settings
+inherit            = powerline/left-to-right-item-with-separator
+background         = ${colors.green}
+separator          = ${colors.black}
+
+; Other settings
+type               = internal/memory
+format-background  = ${self.background}
+format-foreground  = ${colors.black}
+label              = " RAM: %percentage_used%% "
+#+END_SRC
+
+  * End-of-line separator
+
+#+BEGIN_SRC
+[module/end-of-line]
+
+; Powerline settings
+inherit            = powerline/left-to-right-end-of-line-separator
+separator          = ${colors.black}
+#+END_SRC
+
+You should now have something like this (file:samples/6_separated-left-to-right-noborder.config):
+
+file:samples/6_separated-left-to-right-noborder.png
+
+#+BEGIN_QUOTE
+In case you forget to use the =powerline/left-to-right-starting-item-with-separator= for the first module, this is what
+to expect, but might be intended (file:samples/5_separated-left-to-right-nostarting-noborder.config):
+
+file:samples/5_separated-left-to-right-nostarting-noborder.png
+#+END_QUOTE
+
+My opinion being that separator-including lines look far better with borders, let's add them to finish building up our
+current example :
+
+#+BEGIN_SRC
+[bar/my-bar]
+...
+border-left-size   = 2
+border-top-size    = 2
+border-right-size  = 2
+border-bottom-size = 2
+border-color       = #ffffff
+...
+#+END_SRC
+
+file:samples/4_separated-left-to-right.png
+
+Again, right-to-left equivalent is available (file:samples/7_separated-right-to-left.config):
+
+file:samples/7_separated-right-to-left.png
+
+* Reference sheet
+
+  *[WORK IN PROGRESS]*
