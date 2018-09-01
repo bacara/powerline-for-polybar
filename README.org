@@ -55,7 +55,7 @@ inherit      = <template>
 
   Real parameters will be explained along the following examples.
 
-*** Simple Powerline bar
+** Simple Powerline bar
 
    Let take a look back at the first example (corresponding configuration file is
    [[./samples/1_simple-left-to-right.config][file:samples/1_simple-left-to-right.config]]):
@@ -162,14 +162,14 @@ configuration right.
 
 Note that template is also available in right-to-left, using corresponding template names. For right-to-left lines,
 consider the rightmost item is the starting item while the leftmost is the ending one. The sample configuration file for
-the right-to-left equivalent of this example is [[./3_simple-right-to-left.config][file:samples/3_simple-right-to-left.config]].
+the right-to-left equivalent of this example is [[./samples/3_simple-right-to-left.config][file:samples/3_simple-right-to-left.config]].
 
 [[./samples/3_simple-right-to-left.png][file:samples/3_simple-right-to-left.png]]
 
 ** Separator-including Powerline bar
 
 Another, slightly more complicated example, is a Powerline bar including separators between items (corresponding
-configuration] file is [[./samples/4_separated-left-to-right.config][file:samples/4_separated-left-to-right.config]]):
+configuration file is [[./samples/4_separated-left-to-right.config][file:samples/4_separated-left-to-right.config]]):
 
 [[./samples/4_separated-left-to-right.png][file:samples/4_separated-left-to-right.png]]
 
