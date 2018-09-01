@@ -22,7 +22,7 @@ An example being better than words, here's a quick look :
   files. You only have to clone/download/rewrite files to somewhere on your system.
 
 #+BEGIN_SRC shell
-git clone https://www.github.com/bacara/powerline-for-polybar <path/to/folder>
+git clone https://www.github.com/bacara/powerline-for-polybar powerline-for-polybar
 #+END_SRC
 
   Yay!
