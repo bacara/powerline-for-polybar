@@ -361,10 +361,9 @@ label-urgent                = "%{B#802929 F#000000}%{B#802929 F#ffffff}  %nam
    following sample shows workspaces display only, and the second one shows workspaces display with a prepended i3 mode
    indicator.
 
-file:img/deep-ux_workspaces_i3.png
+[[./img/deep-ux_workspaces_i3.png][file:img/deep-ux_workspaces_i3.png]]
 
-file:img/deep-ux_workspaces_mode_i3.png
-
+[[./img/deep-ux_workspaces_mode_i3.png][file:img/deep-ux_workspaces_mode_i3.png]]
 
 * Reference sheet
 
