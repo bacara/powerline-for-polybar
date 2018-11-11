@@ -2,6 +2,8 @@
 #+TITLE: Powerline for Polybar
 #+LANGUAGE: en
 
+#+OPTIONS: toc:2
+
 * Introduction
 
 Powerline for Polybar is a utility set of pre-configured Polybar module templates.
@@ -34,8 +36,8 @@ git clone https://www.github.com/bacara/powerline-for-polybar powerline-for-poly
 
 * Beginner's guide
 
-  The file [[./powerline-for-polybar.config][file:powerline-for-polybar.config]] contains pre-configured templates to be inherited by your Polybar modules in
-  order to your own build fancy Powerline setup. A good start is to include this file to your Polybar configuration
+  The file [[./powerline-for-polybar.config][file:powerline-for-polybar.config]] contains pre-configured templates to be inherited by your Polybar modules
+  in order to your own build fancy Powerline setup. A good start is to include this file to your Polybar configuration
   file :
 
 #+BEGIN_SRC ini
@@ -302,6 +304,67 @@ border-color       = #ffffff
 Again, right-to-left equivalent is available ([[./samples/7_separated-right-to-left.config][file:samples/7_separated-right-to-left.config]]):
 
 [[./img/7_separated-right-to-left.png][file:img/7_separated-right-to-left.png]]
+
+* Workspaces display
+
+  As of now, designing a workspaces display area in your bar requires specific settings because of two reasons : (1) no
+  prefix/suffix formatting is actually possible (2) it depends on your windows manager.
+
+  Being an exclusive user of i3, i'll only explain the needed configuration for this window manager only.
+
+** i3
+
+   For technical reasons i won't explain in here, you must include a separator between your workspaces for the best
+   visual appearance. Thus, you need to choose the colors you'll use from here (you should have the #rrggbb hexadecimal
+   format) :
+
+   * general background color, which will be the color of your separators,
+   * background and foreground color of your mode indicator,
+   * background and foreground color of focused workspace,
+   * background and foreground color of unfocused workspace,
+   * background and foreground color of visible workspace,
+   * background and foreground color of urgent workspace.
+
+  I won't explain in details how to build your own, things are pretty simple and straightforward. Just take a look at my
+  configuration, cleaned of any "non-relevant to this scenario" settings.
+
+  Chosen colors :
+   * General background color : #000000
+   * Mode indicator : #802929 (background) and #000000 (foreground)
+   * Focused workspace : #427241 (background) and #ffffff (foreground)
+   * Unfocused workspace : #303030 (background) and #999999 (foreground)
+   * Visible workspace : #4f6a5a (background) and #ffffff (foreground)
+   * Urgent workspace : #802929 (background) and #ffffff (foreground)
+
+#+BEGIN_SRC ini
+[module/workspaces]
+type            = internal/i3
+format          = "<label-state><label-mode>"
+
+label-mode-padding          = 0
+label-mode                  = "%{B#802929 F#000000}  %mode%  %{B#000000 F#802929}"
+
+label-focused-padding       = 0
+label-focused               = "%{B#427241 F#000000}%{B#427241 F#ffffff}  %name%  %{B#000000 F#427241}"
+
+label-unfocused-padding     = ${self.label-focused-padding}
+label-unfocused             = "%{B#303030 F#000000}%{B#303030 F#999999}  %name%  %{B#000000 F#303030}"
+
+label-visible-padding       = ${self.label-focused-padding}
+label-visible               = "%{B#4f6a5a F#000000}%{B#4f6a5a F#FFFFFF}  %name%  %{B#000000 F#4f6a5a}"
+
+label-urgent-padding        = ${self.label-focused-padding}
+label-urgent                = "%{B#802929 F#000000}%{B#802929 F#ffffff}  %name%  %{B#000000 F#802929}"
+#+END_SRC
+
+   And the final result (of course, to be included inside a well-configured poly-power-bar, see above). The first
+   following sample shows workspaces display only, and the second one shows workspaces display with a prepended i3 mode
+   indicator.
+
+file:img/deep-ux_workspaces_i3.png
+
+file:img/deep-ux_workspaces_mode_i3.png
+
 
 * Reference sheet
 
